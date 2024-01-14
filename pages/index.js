@@ -17,7 +17,6 @@ function Home() {
         setup: obj.setup,
         punchline: obj.delivery,
       });
-
       setButton('Get Punchline');
     });
   };
@@ -26,26 +25,14 @@ function Home() {
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
       style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
+        height: '90vh', padding: '30px', maxWidth: '400px', margin: '0 auto',
       }}
     >
-      <>
-        <h1>{joke.setup}</h1>
-        <p>{btnText === 'Get Punchline' ? joke.punchline : ''}</p>
-      </>
-      <Button joke={joke} btnText={btnText} />
-      {btnText === 'Get A Joke' || btnText === 'Get A New Joke' ? (
-        <Button type="button" onClick={getAJoke}>
-          {btnText}
-        </Button>
-      ) : (
-        <Button type="button" onClick={() => setButton('Get A New Joke')}>
-          {btnText}
-        </Button>
-      )}
+      <h1>{joke.setup}</h1>
+      <p>{btnText === 'Get Punchline' ? joke.punchline : ''}</p>
+      <Button type="button" onClick={btnText === 'Get A Joke' ? getAJoke : () => setButton('Get A New Joke')}>
+        {btnText}
+      </Button>
     </div>
   );
 }
